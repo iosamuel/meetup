@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang="es">
+<head>
+	<meta charset="UTF-8">
+	<title>Meetup</title>
+</head>
+<body>
+	<ul>
+		{% for evento in eventos %}
+			<li>
+				<a href="{% url 'principal.views.evento' evento.id %}">{{ evento.nombre }}</a><br>
+				<span>{{ evento.lugar }}</span><br>
+				<span>{{ evento.hora }}</span>
+			</li>
+		{% empty %}
+			<li>No hay eventos.</li>
+		{% endfor %}
+	</ul>
+</body>
+</html>

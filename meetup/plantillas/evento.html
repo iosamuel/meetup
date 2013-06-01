@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="es">
+<head>
+	<meta charset="UTF-8">
+	<title>{{ evento.nombre }}</title>
+</head>
+<body>
+	<h1>{{ evento.nombre }}</h1>
+	<span>{{ evento.lugar }}</span><br>
+	<span>{{ evento.hora }}</span>
+
+	<hr>
+
+	<ul>
+		{% for usuario in evento.usuarios_set.all %}
+			<li>{{ usuario.nombre }} - {{ usuario.correo }}</li>
+		{% endfor %}
+	</ul> 
+
+	<hr>
+	
+	<form method="post">{% csrf_token %}
+		{{ usuarios_form.as_p }}
+		<input type="submit" value="Ir al evento">
+	</form>
+</body>
+</html>
